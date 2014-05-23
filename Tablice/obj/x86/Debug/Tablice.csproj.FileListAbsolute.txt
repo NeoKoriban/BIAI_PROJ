@@ -1,0 +1,45 @@
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\obj\x86\Debug\Tablice.Form1.resources
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\obj\x86\Debug\Tablice.Properties.Resources.resources
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\Tablice.exe
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\Tablice.pdb
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\obj\x86\Debug\Tablice.exe
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\obj\x86\Debug\Tablice.pdb
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Neuro.dll
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Genetic.dll
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.dll
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Math.dll
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Neuro.xml
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Genetic.xml
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.xml
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Math.xml
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Video.DirectShow.dll
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Video.dll
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Video.xml
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Video.DirectShow.xml
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Imaging.dll
+C:\Documents and Settings\ozz\Moje dokumenty\Visual Studio 2010\Projects\Tablice\Tablice\bin\Debug\AForge.Imaging.xml
+D:\Studia\BIAI\Tablice\Tablice\obj\x86\Debug\Tablice.exe
+D:\Studia\BIAI\Tablice\Tablice\obj\x86\Debug\Tablice.pdb
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\Tablice.exe
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\Tablice.pdb
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Genetic.dll
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.xml
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Imaging.xml
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Math.xml
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Neuro.xml
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Video.xml
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Video.DirectShow.xml
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Genetic.xml
+D:\Studia\BIAI\Tablice\Tablice\obj\x86\Debug\Tablice.csprojResolveAssemblyReference.cache
+D:\Studia\BIAI\Tablice\Tablice\obj\x86\Debug\Tablice.Form1.resources
+D:\Studia\BIAI\Tablice\Tablice\obj\x86\Debug\Tablice.Properties.Resources.resources
+D:\Studia\BIAI\Tablice\Tablice\obj\x86\Debug\Tablice.csproj.GenerateResource.Cache
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.dll
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Imaging.dll
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Math.dll
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Neuro.dll
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Video.DirectShow.dll
+D:\Studia\BIAI\Tablice\Tablice\bin\Debug\AForge.Video.dll
