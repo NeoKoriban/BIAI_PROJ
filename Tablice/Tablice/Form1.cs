@@ -20,37 +20,38 @@ namespace Tablice
 {
     public partial class Form1 : Form
     {
-        ManageFrame feed;
-        ManageImage frame;
-        FindBlob blob;
+        ManageFrame feed = new ManageFrame();
+        ManageImage frame = new ManageImage();
+        FindBlob blob = new FindBlob();
 
-        Bitmap bmp;                
+        Bitmap bmp;
+        Bitmap toEdit;
+        Bitmap croppedBmp;
+        Bitmap croppedVideo;
+        Bitmap shot;
+        
         List<Rectangle> rectangleList = new List<Rectangle>();
         ArrayList devices = new ArrayList();
         public FilterInfoCollection usbCams;
         public VideoCaptureDevice cam;
+        List<IntPoint> cornerList = new List<IntPoint>();
 
         public Form1()
         {
             InitializeComponent();
             feed = new ManageFrame();
-            button4.Enabled = false;
-            button5.Enabled = false;
+            findPlate.Enabled = false;
+         
         }
 
-        //Get bitmap (from file for now)
-        private void button1_Click(object sender, EventArgs e)
+
+        private Timer timer1;
+        public void InitTimer()
         {
-             pictureBox1.Image =  new Bitmap("demo.bmp");
-             bmp = pictureBox1.Image as Bitmap;
-             frame = new ManageImage(bmp);           
-        }      
-   
-        //Cut into letters
-        private void button2_Click(object sender, EventArgs e)
-        {
-            frame.getBlack();   
-            //findRegistration(bmp);                    
+            timer1 = new Timer();
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Interval = 2000; // in miliseconds
+            timer1.Start();
         }
 
         //Get list of USB cameras connected to the computer
@@ -58,70 +59,294 @@ namespace Tablice
         private void button3_Click(object sender, EventArgs e)
         {
             devices = feed.getDevices();
-            this.comboBox1.DataSource = devices;
-            button4.Enabled = true;            
+            this.comboBox1.DataSource = devices;         
+
+            usbCams = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            cam = new VideoCaptureDevice(usbCams[comboBox1.SelectedIndex].MonikerString);
+            cam.NewFrame += new NewFrameEventHandler(cam_newFrame);
+            cam.Start();
+            findPlate.Enabled = true;
+
+ //           InitTimer();
         }
 
         //Live feed into pictureBox2
         private void cam_newFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            pictureBox2.Image = (Bitmap)eventArgs.Frame.Clone();
+            shot = (Bitmap)eventArgs.Frame.Clone();
+            shot = frame.scaleImage(pictureBox2.Width, pictureBox2.Height, shot);
+            pictureBox2.Image = shot;
+            
+        }
+       
+       
+         private void timer1_Tick(object sender, EventArgs e)
+        {
+           // pictureBox2.Image = shot;
+            
         }
         
-        //Capture frames from the feed
-        private void button4_Click(object sender, EventArgs e)
+
+        private void tabPage1_Click(object sender, EventArgs e)
         {
-            usbCams = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            cam = new VideoCaptureDevice(usbCams[comboBox1.SelectedIndex].MonikerString);
-            cam.NewFrame += new NewFrameEventHandler(cam_newFrame);
-            cam.Start();
-            button5.Enabled = true;
+
         }
 
-        //Freeze frame from pictureBox3
-        private void button5_Click(object sender, EventArgs e)
+        private void pictureboxEditPicture_Click(object sender, EventArgs e)
         {
-            pictureBox3.Image = pictureBox2.Image;
+
         }
 
+      
 
-        private System.Drawing.Point[] ToPointsArray(List<IntPoint> points)
-        {
-            System.Drawing.Point[] array = new System.Drawing.Point[points.Count];
+        
+       
 
-            for (int i = 0, n = points.Count; i < n; i++)
-            {
-                array[i] = new System.Drawing.Point(points[i].X, points[i].Y);
-            }
-
-            return array;
-        }
-
-        //public void findRegistration(Bitmap bmp)
+       
+        //private void rotateButton_Click(object sender, EventArgs e)
         //{
-        //    BlobCounter blobCounter = new BlobCounter();
-        //    blobCounter.ProcessImage(bmp);
-        //    Blob[] blobs = blobCounter.GetObjectsInformation();
-        //    // create Graphics object to draw on the image and a pen
-        //    Graphics g = Graphics.FromImage(bmp);
-        //    Pen bluePen = new Pen(Color.Blue, 2);
-        //    for (int i = 0, n = blobs.Length; i < n; i++)
-        //    {
-        //        List<IntPoint> edgePoints = blobCounter.GetBlobsEdgePoints(blobs[i]);
-        //        List<IntPoint> corners = PointsCloud.FindQuadrilateralCorners(edgePoints);
+        //    cornerList = blob.getCorners(croppedBmp);
+        //    List<IntPoint> frameCorners = new List<IntPoint>();
+        //    IntPoint zero = new IntPoint(0, 0);
+        //    IntPoint one = new IntPoint(croppedBmp.Width, 0);
+        //    IntPoint two = new IntPoint(croppedBmp.Width, croppedBmp.Height);
+        //    IntPoint three = new IntPoint(0, croppedBmp.Height);
+        //    frameCorners.Add(zero);
+        //    frameCorners.Add(one);
+        //    frameCorners.Add(two);
+        //    frameCorners.Add(three);
 
-        //        g.DrawPolygon(bluePen, ToPointsArray(corners));
-        //    }
+        //    int angle = frame.calculateRotateAngle(cornerList, frameCorners);
 
-        //    bluePen.Dispose();
-        //    g.Dispose();
-
+        //    croppedBmp = frame.RotateImage(croppedBmp, angle);
+        //    pictureBoxCutPlate.Image = croppedBmp; 
+            
         //}
 
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+      
+       
+
+        private void tabPage1_Click_1(object sender, EventArgs e)
+        {
+             
+        }
+
+
+       private void status_Click(object sender, EventArgs e)
+       {
+
+       }
+
+       private void tabPage2_Click(object sender, EventArgs e)
+       {
+
+       }
+
+       private void LoadFileButton_Click(object sender, EventArgs e)
+       {
+
+           pictureBoxCutPlate.Image = null;
+           pictureboxEditPicture.Image = null;
+
+           String input = string.Empty;
+           OpenFileDialog dialog = new OpenFileDialog();
+
+           dialog.Filter = "BMP | *.bmp";
+
+          // dialog.InitialDirectory = "D:/Studia/BIAI/Tablice/Tablice/bin/Debug";
+           dialog.InitialDirectory = "C:";
+          
+           dialog.Title = "Select a text file";
+           if (dialog.ShowDialog() == DialogResult.OK)
+
+               input = dialog.FileName;
+
+           if (input == String.Empty)
+
+               return; //user didn't select a file to opena
+           toEdit = new Bitmap(dialog.FileName);
+           toEdit = frame.scaleImage(pictureboxEditPicture.Width, pictureboxEditPicture.Height, toEdit);
+           pictureboxEditPicture.Image = toEdit;
 
 
 
+           //CUT PLATE
+           List<IntPoint> corners = blob.getCorners(toEdit);
+
+           if (corners.Count > 0)
+           {
+               int maxY, minY, maxX, minX;
+               if (corners[1].Y < corners[0].Y) maxY = corners[1].Y;
+               else maxY = corners[0].Y;
+
+               if (corners[3].Y > corners[2].Y) minY = corners[3].Y;
+               else minY = corners[2].Y;
+
+               if (corners[0].X < corners[3].X) minX = corners[0].X;
+               else minX = corners[3].X;
+
+               if (corners[1].X < corners[2].X) maxX = corners[2].X;
+               else maxX = corners[1].X;
 
 
+
+               Rectangle rectangle = new Rectangle(minX, maxY, maxX - minX, minY - maxY);
+               System.Drawing.Image img = (System.Drawing.Image)toEdit;
+               System.Drawing.Image cropped = frame.cropImage(img, rectangle);
+               croppedBmp = new Bitmap(cropped);
+               croppedBmp = frame.scaleImage(pictureBoxCutPlate.Width, pictureBoxCutPlate.Height, croppedBmp);
+
+               pictureBoxCutPlate.Image = croppedBmp;
+
+               //GREYSCALE & THRESEHOLD
+               Grayscale filter = new Grayscale(0.2125, 0.7154, 0.0721);
+               // apply the filter
+               croppedBmp = filter.Apply(croppedBmp);
+
+
+               OtsuThreshold thr = new OtsuThreshold();
+               //   apply the filter
+               thr.ApplyInPlace(croppedBmp);
+               pictureBoxCutPlate.Image = croppedBmp;
+
+               croppedBmp = frame.cutCorners(croppedBmp);
+               croppedBmp = frame.scaleImage(pictureBoxCutPlate.Width, pictureBoxCutPlate.Height, croppedBmp);
+               pictureBoxCutPlate.Image = croppedBmp;
+              // pictureBox1.Image = croppedBmp;
+
+
+               status.Text = "Plate found";
+
+               bmp = pictureBoxCutPlate.Image as Bitmap;
+               frame = new ManageImage(bmp);
+               frame.getBlack();
+
+               if (frame.images.Count() > 0)
+               {
+
+                   status.Text = "Characters found and saved";
+                 
+               }
+               else status.Text = "No characters found";
+
+
+           }
+           else status.Text = "Plate not found";
+
+
+           toEdit = blob.ProcessImage(toEdit);
+           pictureboxEditPicture.Image = toEdit;
+
+       }
+
+       private void Form1_Load(object sender, EventArgs e)
+       {
+
+       }
+
+       private void pictureBoxCutPlate_Click(object sender, EventArgs e)
+       {
+
+       }
+
+       public void processVideo()
+
+       { 
+       //CUT PLATE
+           Bitmap toEditVideo = pictureboxCatched.Image as Bitmap;
+           List<IntPoint> corners = blob.getCorners(toEditVideo);
+
+           if (corners.Count > 0)
+           {
+               int maxY, minY, maxX, minX;
+               if (corners[1].Y < corners[0].Y) maxY = corners[1].Y;
+               else maxY = corners[0].Y;
+
+               if (corners[3].Y > corners[2].Y) minY = corners[3].Y;
+               else minY = corners[2].Y;
+
+               if (corners[0].X < corners[3].X) minX = corners[0].X;
+               else minX = corners[3].X;
+
+               if (corners[1].X < corners[2].X) maxX = corners[2].X;
+               else maxX = corners[1].X;
+
+
+
+               Rectangle rectangle = new Rectangle(minX, maxY, maxX - minX, minY - maxY);
+               System.Drawing.Image img = (System.Drawing.Image)toEditVideo;
+               System.Drawing.Image cropped = frame.cropImage(img, rectangle);
+               croppedVideo = new Bitmap(cropped);
+               croppedVideo = frame.scaleImage(pictureBox1.Width, pictureBox1.Height, croppedVideo);
+
+               pictureBox1.Image = croppedVideo;
+
+               //GREYSCALE & THRESEHOLD
+               Grayscale filter = new Grayscale(0.2125, 0.7154, 0.0721);
+               // apply the filter
+               croppedVideo = filter.Apply(croppedVideo);
+
+
+               OtsuThreshold thr = new OtsuThreshold();
+               //   apply the filter
+               thr.ApplyInPlace(croppedVideo);
+               pictureBox1.Image = croppedVideo;
+
+               croppedVideo = frame.cutCorners(croppedVideo);
+               croppedVideo = frame.scaleImage(pictureBox1.Width, pictureBox1.Height, croppedVideo);
+               pictureBox1.Image = croppedVideo;
+
+
+               statusVideo.Text = "Plate found";
+
+               bmp = pictureBox1.Image as Bitmap;
+               frame = new ManageImage(bmp);
+               frame.getBlack();
+
+
+               if (frame.images.Count() > 0)
+               {
+
+                   status.Text = "Characters found and saved";
+
+               }
+               else status.Text = "No characters found";
+
+           }
+           else statusVideo.Text = "Plate not found";
+
+
+           toEditVideo = blob.ProcessImage(toEditVideo);
+           pictureboxCatched.Image = toEditVideo;
+       
+       }
+
+       private void pictureBox1_Click(object sender, EventArgs e)
+       {
+
+       }
+
+       private void findPlate_Click(object sender, EventArgs e)
+       {
+           pictureboxCatched.Image = pictureBox2.Image;
+           if (pictureboxCatched.Image != null) processVideo();
+           else statusVideo.Text = "Frame not found";
+           
+       }
+
+       private void pictureBox2_Click(object sender, EventArgs e)
+       {
+
+       }
     }
 }
