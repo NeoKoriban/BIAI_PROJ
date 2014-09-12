@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using AForge.Neuro;
 using AForge.Neuro.Learning;
+
+using System.Drawing;
+
 namespace Tablice
 {
     class NeuralNetworkOperations
@@ -22,6 +25,41 @@ namespace Tablice
         int characterCount = 36;
         BackPropagationLearning teacher;
         ActivationNetwork neuralNet;
+        
+        public float [] transformationToArray (Bitmap bmp)
+        {
+            Color pixelColor;
+
+            int sizeArray = bmp.Width * bmp.Height;
+            float [] array = new float[sizeArray];
+            int k = 0;
+            for (int i = 0; i < bmp.Height; i++)
+            {
+                for (int j = 0; j < bmp.Width; j++)
+                {
+                    pixelColor = bmp.GetPixel(j, i);
+
+                    if(pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
+                    {
+                        array[k] = -0.5f;
+                    }
+                    else
+                    {
+                        array[k] = 0.5f;
+                    }
+                    k++;
+                }
+            }
+                
+            return array;
+           
+        }
+
+        public NeuralNetworkOperations()
+        {
+
+        }
+
         public NeuralNetworkOperations(int characterSize)
         {
             neuralNet = new ActivationNetwork(new BipolarSigmoidFunction(2.0f), characterSize, characterCount);

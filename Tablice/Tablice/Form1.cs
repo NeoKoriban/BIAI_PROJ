@@ -9,7 +9,6 @@ using System.Text;
 using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
-
 using AForge;
 using AForge.Imaging;
 using AForge.Imaging.Filters;
@@ -347,6 +346,34 @@ namespace Tablice
        private void pictureBox2_Click(object sender, EventArgs e)
        {
 
+       }
+
+       private void changeBitmapButton_Click(object sender, EventArgs e)
+       {
+           
+           NeuralNetworkOperations nno = new NeuralNetworkOperations();
+           Bitmap bmpLoad = new Bitmap("1.bmp");
+           float [] tmpArray = new float [bmpLoad.Width * bmpLoad.Height];
+           tmpArray = nno.transformationToArray(bmpLoad);
+           tableLetter.ColumnHeadersVisible = false;
+           tableLetter.RowHeadersVisible = false;
+          
+           tableLetter.RowCount = bmpLoad.Height;
+           tableLetter.ColumnCount = bmpLoad.Width;
+           
+           int k = 0;
+           for (int i = 0; i < bmpLoad.Height; i++)
+           {
+               for (int j = 0; j < bmpLoad.Width; j++)
+               {
+                   if (tmpArray[k] == 0.5f)
+                   {
+                       tableLetter.Rows[i].Cells[j].Style.BackColor = Color.Black;
+                   }
+                   tableLetter.Rows[i].Cells[j].Value = tmpArray[k];
+                   k++;
+               }
+           }
        }
     }
 }
