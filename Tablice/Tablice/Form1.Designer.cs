@@ -43,10 +43,6 @@
             this.pictureboxCatched = new System.Windows.Forms.PictureBox();
             this.statusVideo = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLetter = new System.Windows.Forms.DataGridView();
-            this.changeBitmapButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -55,8 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxEditPicture)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxCatched)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableLetter)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -100,7 +94,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -214,50 +207,6 @@
             this.openFileDialog1.Title = "Open image";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.changeBitmapButton);
-            this.tabPage3.Controls.Add(this.tableLetter);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(549, 640);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Bitmap to Table";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Character Table";
-            // 
-            // tableLetter
-            // 
-            this.tableLetter.ColumnHeadersHeight = 5;
-            this.tableLetter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.tableLetter.Location = new System.Drawing.Point(30, 43);
-            this.tableLetter.Name = "tableLetter";
-            this.tableLetter.RowHeadersVisible = false;
-            this.tableLetter.RowHeadersWidth = 5;
-            this.tableLetter.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tableLetter.Size = new System.Drawing.Size(314, 259);
-            this.tableLetter.TabIndex = 2;
-            // 
-            // changeBitmapButton
-            // 
-            this.changeBitmapButton.Location = new System.Drawing.Point(376, 43);
-            this.changeBitmapButton.Name = "changeBitmapButton";
-            this.changeBitmapButton.Size = new System.Drawing.Size(124, 63);
-            this.changeBitmapButton.TabIndex = 3;
-            this.changeBitmapButton.Text = "Change Bitmap";
-            this.changeBitmapButton.UseVisualStyleBackColor = true;
-            this.changeBitmapButton.Click += new System.EventHandler(this.changeBitmapButton_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,9 +226,6 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxCatched)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableLetter)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -301,10 +247,6 @@
         private System.Windows.Forms.Label statusVideo;
         private System.Windows.Forms.PictureBox pictureboxCatched;
         private System.Windows.Forms.Button findPlate;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView tableLetter;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button changeBitmapButton;
     }
 }
 

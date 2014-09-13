@@ -6,59 +6,90 @@ using AForge.Neuro;
 using AForge.Neuro.Learning;
 
 using System.Drawing;
+using System.IO;
 
 namespace Tablice
 {
     class NeuralNetworkOperations
     {
         /**
-        * Dobra wypadałoby jeszcze podać wartości które będą uczyć tą naszą sieć i tu jest pytanie
-        * czy podajemy wartości do uczenia jako obrazy, czy po prostu od razu wartości w tablicy.
-        * Znaków jest 36 (26 liter + 10 cyfr). Rozmiaru litery tzn ilości pixeli nie podawałem na sztywno
-        * potem można to zmienić.
-        *
-        * Starałem się jakoś zastosować ten kod ze sampla http://www.codeproject.com/Articles/11285/Neural-Network-OCR
-        *
-        * Wieczorem jeszcze coś pokombinuję.
-        *
-        * */
-        int characterCount = 36;
-        BackPropagationLearning teacher;
-        ActivationNetwork neuralNet;
-        
-        public float [] transformationToArray (Bitmap bmp)
+         * Funkcja zmieniająca bitmapę na tablicę wartości typu double.
+         * Argumenty:
+         *      Bitmap bmp - przekazanie ścieżki do bitmapy.
+         * Zwraca:
+         *      double [] letterArray - tablica z wartościami typu double.
+         * */
+        public double [] transformBitmapToArray(Bitmap bmp)
         {
             Color pixelColor;
-
             int sizeArray = bmp.Width * bmp.Height;
-            float [] array = new float[sizeArray];
+            double[] letterArray = new double[sizeArray];
+
             int k = 0;
+
             for (int i = 0; i < bmp.Height; i++)
             {
                 for (int j = 0; j < bmp.Width; j++)
                 {
                     pixelColor = bmp.GetPixel(j, i);
 
-                    if(pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
-                    {
-                        array[k] = -0.5f;
-                    }
+                    if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
+                        letterArray[k] = -0.5;
                     else
-                    {
-                        array[k] = 0.5f;
-                    }
+                        letterArray[k] = 0.5;
+                    
                     k++;
                 }
             }
-                
-            return array;
-           
+            return letterArray;
         }
+
+        /**
+         * Funkcja przygotowująca listę z listą tablic double z zamienionymi literami.
+         * Argumenty:
+         *      string letterLink - ścieżka do źródła, gdzie znajdują się litery.
+         * Zwraca:
+         *      List <double[]> prepareLetterList - lista z tablicami double []
+         *      z zamienionymi literami.
+         * */
+        public List<double[]> prepareLetterList(string letterLink)
+        {
+            List<double[]> list = new List<double[]>();
+
+            string [] files = Directory.GetFiles(letterLink, "*.bmp");
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                Bitmap bmpLoad = new Bitmap(files[i]);
+                double[] tmpArray = new double[bmpLoad.Width * bmpLoad.Height];
+                tmpArray = transformBitmapToArray(bmpLoad);
+                list.Add(tmpArray);
+            }
+
+            return list;
+        }
+
+        List<double[]> treningLetterList; 
+        
+        /**
+         * Funkcja przygotowująca dane do nauczania sieci.
+         * */
+        public void prepareDataForTeacher()
+        {
+            treningLetterList = prepareLetterList("Letters"); 
+        }
+
+
+        int characterCount = 36;
+        BackPropagationLearning teacher;
+        ActivationNetwork neuralNet;
+
 
         public NeuralNetworkOperations()
         {
 
         }
+        
 
         public NeuralNetworkOperations(int characterSize)
         {
