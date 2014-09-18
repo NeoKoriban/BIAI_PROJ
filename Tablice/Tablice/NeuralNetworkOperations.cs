@@ -69,14 +69,16 @@ namespace Tablice
             return list;
         }
 
-        List<double[]> treningLetterList; 
+        List<double[]> treningLetterListInput;
+        List<double[]> treningLetterListOutput;
         
         /**
          * Funkcja przygotowująca dane do nauczania sieci.
          * */
         public void prepareDataForTeacher()
         {
-            treningLetterList = prepareLetterList("Letters"); 
+            treningLetterListInput = prepareLetterList("Letters2");
+            treningLetterListOutput = prepareLetterList("Letters"); 
         }
 
 
@@ -96,10 +98,15 @@ namespace Tablice
             neuralNet = new ActivationNetwork(new BipolarSigmoidFunction(2.0f), characterSize, characterCount);
             neuralNet.Randomize();
             teacher = new AForge.Neuro.Learning.BackPropagationLearning(neuralNet);
-        }
-        public void teachNeuralNetwork(float[][] inputValue, float[][] outputValue)
-        {
-            // teacher.RunEpoch(inputValue, outputValue);
+
+            prepareDataForTeacher();
+
+            var letters = treningLetterListInput.Zip(treningLetterListOutput, (i,o) => new { treningLetterListInput = i, treningLetterListOutput = o });
+
+            foreach (var io in letters)
+            {
+                teacher.Run(io.treningLetterListInput, io.treningLetterListOutput);
+            }
         }
     }
 }

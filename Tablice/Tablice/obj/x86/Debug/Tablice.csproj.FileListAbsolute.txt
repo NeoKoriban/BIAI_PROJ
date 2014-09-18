@@ -59,3 +59,19 @@ C:\Users\samsung\Desktop\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.
 C:\Users\samsung\Desktop\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.Form1.resources
 C:\Users\samsung\Desktop\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.Properties.Resources.resources
 C:\Users\samsung\Desktop\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.csproj.GenerateResource.Cache
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.exe
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.pdb
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\Tablice.exe
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\Tablice.pdb
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\AForge.Genetic.dll
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\AForge.xml
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\AForge.Imaging.xml
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\AForge.Math.xml
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\AForge.Neuro.xml
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\AForge.Video.xml
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\AForge.Video.DirectShow.xml
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\bin\Debug\AForge.Genetic.xml
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.csprojResolveAssemblyReference.cache
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.Form1.resources
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.Properties.Resources.resources
+C:\Users\szaman\Desktop\Nowy folder (3)\BIAI_PROJ-master\Tablice\Tablice\obj\x86\Debug\Tablice.csproj.GenerateResource.Cache
