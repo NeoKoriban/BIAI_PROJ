@@ -91,7 +91,7 @@ namespace Tablice
                 text += ".bmp";
                 System.Drawing.Image image = bmp;
                 image = cropImage(image, rectangleList[i]);
-                image.Save(text);
+                image.Save("BlobLetters/"+text);
                 images[i]=image;
 
             }

@@ -71,7 +71,7 @@ namespace Tablice
 
         List<double[]> treningLetterListInput;
         List<double[]> treningLetterListOutput;
-        
+        List<double[]> blobDataList;
         /**
          * Funkcja przygotowująca dane do nauczania sieci.
          * */
@@ -79,6 +79,11 @@ namespace Tablice
         {
             treningLetterListInput = prepareLetterList("Letters2");
             treningLetterListOutput = prepareLetterList("Letters"); 
+        }
+
+        public void prepareBlobData()
+        {
+            blobDataList = prepareLetterList("BlobLetters");
         }
 
 

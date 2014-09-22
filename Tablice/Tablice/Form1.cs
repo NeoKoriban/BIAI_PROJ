@@ -349,6 +349,12 @@ namespace Tablice
 
        }
 
+       private void recognitionButton_Click(object sender, EventArgs e)
+       {
+           NeuralNetworkOperations nno = new NeuralNetworkOperations();
+           nno.prepareBlobData();
+       }
+
     }
 
 }

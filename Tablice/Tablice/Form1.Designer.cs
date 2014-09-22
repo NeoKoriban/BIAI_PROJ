@@ -43,6 +43,10 @@
             this.pictureboxCatched = new System.Windows.Forms.PictureBox();
             this.statusVideo = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.recognitionButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.licensePlateTextBox = new System.Windows.Forms.TextBox();
+            this.licensePlateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -51,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxEditPicture)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxCatched)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -102,6 +107,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.status);
             this.tabPage2.Controls.Add(this.LoadFileButton);
             this.tabPage2.Controls.Add(this.pictureBoxCutPlate);
@@ -207,6 +213,44 @@
             this.openFileDialog1.Title = "Open image";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // recognitionButton
+            // 
+            this.recognitionButton.Location = new System.Drawing.Point(14, 26);
+            this.recognitionButton.Name = "recognitionButton";
+            this.recognitionButton.Size = new System.Drawing.Size(184, 37);
+            this.recognitionButton.TabIndex = 10;
+            this.recognitionButton.Text = "Recognize";
+            this.recognitionButton.UseVisualStyleBackColor = true;
+            this.recognitionButton.Click += new System.EventHandler(this.recognitionButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.licensePlateLabel);
+            this.groupBox1.Controls.Add(this.licensePlateTextBox);
+            this.groupBox1.Controls.Add(this.recognitionButton);
+            this.groupBox1.Location = new System.Drawing.Point(9, 484);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(523, 78);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Licence Plate Area";
+            // 
+            // licensePlateTextBox
+            // 
+            this.licensePlateTextBox.Location = new System.Drawing.Point(316, 35);
+            this.licensePlateTextBox.Name = "licensePlateTextBox";
+            this.licensePlateTextBox.Size = new System.Drawing.Size(185, 20);
+            this.licensePlateTextBox.TabIndex = 11;
+            // 
+            // licensePlateLabel
+            // 
+            this.licensePlateLabel.AutoSize = true;
+            this.licensePlateLabel.Location = new System.Drawing.Point(221, 38);
+            this.licensePlateLabel.Name = "licensePlateLabel";
+            this.licensePlateLabel.Size = new System.Drawing.Size(74, 13);
+            this.licensePlateLabel.TabIndex = 12;
+            this.licensePlateLabel.Text = "License Plate:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +270,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxCatched)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -247,6 +293,10 @@
         private System.Windows.Forms.Label statusVideo;
         private System.Windows.Forms.PictureBox pictureboxCatched;
         private System.Windows.Forms.Button findPlate;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label licensePlateLabel;
+        private System.Windows.Forms.TextBox licensePlateTextBox;
+        private System.Windows.Forms.Button recognitionButton;
     }
 }
 
