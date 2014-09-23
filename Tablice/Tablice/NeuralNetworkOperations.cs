@@ -109,16 +109,25 @@ namespace Tablice
 
         public String runRecognition()
         {
-            blobDataList.ForEach(delegate(double[] item)
-            {
-                item = neuralNet.Compute(item);
-            });
-
             String number = "";
-
             blobDataList.ForEach(delegate(double[] item)
             {
-                number += treningLetterListOutput.IndexOf(item).ToString();
+                double[] tmp = neuralNet.Compute(item);
+
+                double max = 0.0f;
+                int maxIndex = 0;
+
+                for (int i = 0; i < tmp.Length; i++)
+                {
+                    if (tmp[i] > max)
+                    {
+                        max = tmp[i];
+                        maxIndex = i;
+                    }
+                }
+
+                number += maxIndex.ToString() + ";";
+
             });
 
             return number;
@@ -151,7 +160,7 @@ namespace Tablice
 
             double err = 1.0f;
 
-            while(err > 0.1)
+            while(err > 300)
             {
                 err = teacher.RunEpoch(treningLetterListInput.ToArray(), treningLetterListOutput.ToArray());
             }
