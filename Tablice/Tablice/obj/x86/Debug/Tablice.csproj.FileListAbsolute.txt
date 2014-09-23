@@ -79,14 +79,7 @@ C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\obj\x86\Debug\Tablice.exe
 C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\obj\x86\Debug\Tablice.pdb
 C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\Tablice.exe
 C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\Tablice.pdb
-C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\AForge.Genetic.dll
-C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\AForge.xml
-C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\AForge.Imaging.xml
-C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\AForge.Math.xml
 C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\AForge.Neuro.xml
-C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\AForge.Video.xml
-C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\AForge.Video.DirectShow.xml
-C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\bin\Debug\AForge.Genetic.xml
 C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\obj\x86\Debug\Tablice.csprojResolveAssemblyReference.cache
 C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\obj\x86\Debug\Tablice.Form1.resources
 C:\Users\samsung\Desktop\BIAI_PROJ\Tablice\Tablice\obj\x86\Debug\Tablice.Properties.Resources.resources

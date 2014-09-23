@@ -71,12 +71,12 @@ namespace Tablice
         public List<double[]> prepareLetterListOutput()
         {
             List<double[]> list = new List<double[]>();
-
+            int size = 63 * 69;
             for (int i = 0; i < 36; i++)
             {
-                double[] tmpArray = new double[36];
+                double[] tmpArray = new double[size];
 
-                for (int j = 0; j < 36; j++)
+                for (int j = 0; j < size; j++)
                 {
                     if (j == i)
                         tmpArray[j] = 0.5;
