@@ -89,7 +89,6 @@ namespace Tablice
 
         public String runRecognition()
         {
-
             blobDataList.ForEach(delegate(double[] item)
             {
                 item = neuralNet.Compute(item);
@@ -99,7 +98,7 @@ namespace Tablice
 
             blobDataList.ForEach(delegate(double[] item)
             {
-                number += treningLetterListInput.IndexOf(item).ToString();
+                number += treningLetterListOutput.IndexOf(item).ToString();
             });
 
             return number;
@@ -122,14 +121,18 @@ namespace Tablice
             neuralNet = new ActivationNetwork(new BipolarSigmoidFunction(2.0f), characterSize, characterCount);
             neuralNet.Randomize();
             teacher = new AForge.Neuro.Learning.BackPropagationLearning(neuralNet);
+            teacher.LearningRate = 0.5f;
+            teacher.Momentum = 0.1f;
 
             prepareDataForTeacher();
 
-            var letters = treningLetterListInput.Zip(treningLetterListOutput, (i,o) => new { treningLetterListInput = i, treningLetterListOutput = o });
+            //var letters = treningLetterListInput.Zip(treningLetterListOutput, (i,o) => new { treningLetterListInput = i, treningLetterListOutput = o });
 
-            foreach (var io in letters)
+            double err = 1.0f;
+
+            while(err > 0.1)
             {
-                teacher.Run(io.treningLetterListInput, io.treningLetterListOutput);
+                err = teacher.RunEpoch(treningLetterListInput.ToArray(), treningLetterListOutput.ToArray());
             }
 
             
