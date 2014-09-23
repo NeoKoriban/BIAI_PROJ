@@ -68,7 +68,27 @@ namespace Tablice
 
             return list;
         }
+        public List<double[]> prepareLetterListOutput()
+        {
+            List<double[]> list = new List<double[]>();
 
+            for (int i = 0; i < 36; i++)
+            {
+                double[] tmpArray = new double[36];
+
+                for (int j = 0; j < 36; j++)
+                {
+                    if (j == i)
+                        tmpArray[j] = 0.5;
+                    else
+                        tmpArray[j] = -0.5;
+                }
+
+                list.Add(tmpArray);
+            }
+
+            return list;
+        }
         List<double[]> treningLetterListInput;
         List<double[]> treningLetterListOutput;
         List<double[]> blobDataList;
@@ -78,8 +98,8 @@ namespace Tablice
          * */
         public void prepareDataForTeacher()
         {
-            treningLetterListInput = prepareLetterList("Letters2");
-            treningLetterListOutput = prepareLetterList("Letters"); 
+            treningLetterListInput = prepareLetterList("Letters");
+            treningLetterListOutput = prepareLetterListOutput();
         }
 
         public void prepareBlobData()
@@ -103,6 +123,7 @@ namespace Tablice
 
             return number;
         }
+       
 
 
         int characterCount = 36;
