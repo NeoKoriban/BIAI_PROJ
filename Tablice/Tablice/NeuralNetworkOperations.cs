@@ -72,6 +72,7 @@ namespace Tablice
         List<double[]> treningLetterListInput;
         List<double[]> treningLetterListOutput;
         List<double[]> blobDataList;
+        List<double[]> blobDataOutput;
         /**
          * Funkcja przygotowująca dane do nauczania sieci.
          * */
@@ -84,6 +85,24 @@ namespace Tablice
         public void prepareBlobData()
         {
             blobDataList = prepareLetterList("BlobLetters");
+        }
+
+        public String runRecognition()
+        {
+
+            blobDataList.ForEach(delegate(double[] item)
+            {
+                item = neuralNet.Compute(item);
+            });
+
+            String number = "";
+
+            blobDataList.ForEach(delegate(double[] item)
+            {
+                number += treningLetterListInput.IndexOf(item).ToString();
+            });
+
+            return number;
         }
 
 
@@ -112,6 +131,8 @@ namespace Tablice
             {
                 teacher.Run(io.treningLetterListInput, io.treningLetterListOutput);
             }
+
+            
         }
     }
 }

@@ -36,6 +36,8 @@ namespace Tablice
         public VideoCaptureDevice cam;
         List<IntPoint> cornerList = new List<IntPoint>();
 
+        NeuralNetworkOperations net = new NeuralNetworkOperations(63 * 69);
+
         public Form1()
         {
             InitializeComponent();
@@ -351,8 +353,15 @@ namespace Tablice
 
        private void recognitionButton_Click(object sender, EventArgs e)
        {
-           NeuralNetworkOperations nno = new NeuralNetworkOperations();
-           nno.prepareBlobData();
+           net.prepareBlobData();
+
+
+           this.licensePlateTextBox.Text = net.runRecognition();
+       }
+
+       private void licensePlateTextBox_TextChanged(object sender, EventArgs e)
+       {
+
        }
 
     }

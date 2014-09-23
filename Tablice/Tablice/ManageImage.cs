@@ -91,10 +91,16 @@ namespace Tablice
                 text += ".bmp";
                 System.Drawing.Image image = bmp;
                 image = cropImage(image, rectangleList[i]);
+                image = resizeImage(image, new Size(63, 69));
                 image.Save("BlobLetters/"+text);
                 images[i]=image;
 
             }
+        }
+
+        public static System.Drawing.Image resizeImage(System.Drawing.Image imgToResize, Size size)
+        {
+            return (System.Drawing.Image)(new Bitmap(imgToResize, size));
         }
 
         public  Bitmap RotateImage(Bitmap bimp, float rotationAngle)

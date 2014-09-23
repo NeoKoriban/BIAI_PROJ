@@ -13,7 +13,7 @@ namespace Tablice
         [STAThread]
         static void Main()
         {
-            NeuralNetworkOperations net = new NeuralNetworkOperations(63 * 69);
+            
 
 
             Application.EnableVisualStyles();
