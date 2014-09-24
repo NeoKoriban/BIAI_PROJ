@@ -32,7 +32,7 @@ namespace Tablice
                 new Rectangle(0, 0, bitmap.Width, bitmap.Height),
                 ImageLockMode.ReadWrite, bitmap.PixelFormat);
 
-            // step 1 - turn background to black
+            //black background
             ColorFiltering colorFilter = new ColorFiltering();
 
             colorFilter.Red = new IntRange(0, 64);
@@ -42,7 +42,7 @@ namespace Tablice
 
             colorFilter.ApplyInPlace(bitmapData);
 
-            // step 2 - locating objects
+            //locating figures
             BlobCounter blobCounter = new BlobCounter();
 
             blobCounter.FilterBlobs = true;
@@ -53,12 +53,12 @@ namespace Tablice
             Blob[] blobs = blobCounter.GetObjectsInformation();
             bitmap.UnlockBits(bitmapData);
 
-            // step 3 - check objects' type and highlight
+            //check type of figure
             SimpleShapeChecker shapeChecker = new SimpleShapeChecker();
 
             Graphics g = Graphics.FromImage(bitmap);
 
-            Pen redPen = new Pen(Color.Red, 2);       // quadrilateral
+            Pen redPen = new Pen(Color.Red, 2);       // pen to colour egdes
 
             for (int i = 0, n = blobs.Length; i < n; i++)
             {
@@ -67,10 +67,10 @@ namespace Tablice
 
 
 
-                // is triangle or quadrilateral
+                // is triangle or rectangle
                 if (shapeChecker.IsConvexPolygon(edgePoints, out corners))
                 {
-                    // get sub-type
+                    // get subtype (is rectangle?)
                     PolygonSubType subType = shapeChecker.CheckPolygonSubType(corners);
 
                     Pen pen;
@@ -107,7 +107,7 @@ namespace Tablice
 
             g.Dispose();
 
-            // put new image to clipboard
+            
             Clipboard.SetDataObject(bitmap);
             // and to picture box
             // pictureBox.Image = bitmap;
@@ -117,6 +117,7 @@ namespace Tablice
 
         }
 
+        //returns corners of found rectangle
         public List<IntPoint> getCorners(Bitmap toEdit)
         {
 
@@ -128,7 +129,7 @@ namespace Tablice
                 new Rectangle(0, 0, bitmap.Width, bitmap.Height),
                 ImageLockMode.ReadWrite, bitmap.PixelFormat);
 
-            // step 1 - turn background to black
+            //black background
             ColorFiltering colorFilter = new ColorFiltering();
 
             colorFilter.Red = new IntRange(0, 64);
@@ -138,7 +139,7 @@ namespace Tablice
 
             colorFilter.ApplyInPlace(bitmapData);
 
-            // step 2 - locating objects
+            //locate figurres
             BlobCounter blobCounter = new BlobCounter();
 
             blobCounter.FilterBlobs = true;
@@ -149,7 +150,7 @@ namespace Tablice
             Blob[] blobs = blobCounter.GetObjectsInformation();
             bitmap.UnlockBits(bitmapData);
 
-            // step 3 - check objects' type and highlight
+            //check object type
             SimpleShapeChecker shapeChecker = new SimpleShapeChecker();
 
             Graphics g = Graphics.FromImage(bitmap);
@@ -163,10 +164,10 @@ namespace Tablice
 
 
 
-                // is triangle or quadrilateral
+                // check if trainge of rectangle
                 if (shapeChecker.IsConvexPolygon(edgePoints, out corners))
                 {
-                    // get sub-type
+                    // get subtype (is rectangle?)
                     PolygonSubType subType = shapeChecker.CheckPolygonSubType(corners);
 
 
@@ -189,7 +190,7 @@ namespace Tablice
                                 }
                             }
                         }
-
+                        //sort list of corners
                         if (corners[0].X > corners[1].X)
                         {
                             IntPoint temp = new IntPoint();
@@ -246,6 +247,7 @@ namespace Tablice
             return array;
         }
 
+        //crop bitmap by cornars
         public Bitmap cropBlob(Bitmap toEdit, List<IntPoint> corners)
         {
 

@@ -87,6 +87,8 @@ namespace Tablice
 
             for (int i = 0; i < rectangleList.Count; i++)
             {
+               
+
                 string text = i.ToString();
                 text += ".bmp";
                 System.Drawing.Image image = bmp;
@@ -97,43 +99,45 @@ namespace Tablice
 
             }
         }
-
+        
+        //resizing image without preserving proportions
         public static System.Drawing.Image resizeImage(System.Drawing.Image imgToResize, Size size)
         {
             return (System.Drawing.Image)(new Bitmap(imgToResize, size));
         }
 
+        //rotating image by angle
         public  Bitmap RotateImage(Bitmap bimp, float rotationAngle)
         {
-            //create an empty Bitmap image
+            
             Bitmap bmp = new Bitmap(bimp.Width, bimp.Height);
 
-            //turn the Bitmap into a Graphics object
-            Graphics gfx = Graphics.FromImage(bmp);
+            
+            Graphics graph = Graphics.FromImage(bmp);
 
-            //now we set the rotation point to the center of our image
-            gfx.TranslateTransform((float)bmp.Width / 2, (float)bmp.Height / 2);
+            //rotation point - centre of the bitmap
+            graph.TranslateTransform((float)bmp.Width / 2, (float)bmp.Height / 2);
 
-            //now rotate the image
-            gfx.RotateTransform(rotationAngle);
+            //rotating
+            graph.RotateTransform(rotationAngle);
 
-            gfx.TranslateTransform(-(float)bmp.Width / 2, -(float)bmp.Height / 2);
+            graph.TranslateTransform(-(float)bmp.Width / 2, -(float)bmp.Height / 2);
 
-            //set the InterpolationMode to HighQualityBicubic so to ensure a high
-            //quality image once it is transformed to the specified size
-            gfx.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            //interpolation mode - allagedilly to preserve quality of an image
+            graph.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             
 
-            //now draw our new image onto the graphics object
-            gfx.DrawImage(bimp, new System.Drawing.Point(0, 0));
+            
+            graph.DrawImage(bimp, new System.Drawing.Point(0, 0));
 
-            //dispose of our Graphics object
-            gfx.Dispose();
+            
+            graph.Dispose();
 
-            //return the image
+            
             return bmp;
         }
 
+        //calculating rotation angle (form the law of cosines)
         public int calculateRotateAngle(List<IntPoint> blobCorners, List<IntPoint> frameCorners)
         {
             IntPoint center = new IntPoint(frameCorners[2].X/2, frameCorners[2].Y/2);
@@ -154,6 +158,7 @@ namespace Tablice
 
         }
 
+        //scaling of a bitmap with preserving proportions
         public Bitmap scaleImage(int PbWidth, int PbHeigth, Bitmap bitmap) 
         {
 
@@ -181,6 +186,7 @@ namespace Tablice
             return bitmap;
         }
 
+        //cutting edges of the bitmap
         public Bitmap cutCorners(Bitmap bitmap) 
         {
             int heigth = bitmap.Height;

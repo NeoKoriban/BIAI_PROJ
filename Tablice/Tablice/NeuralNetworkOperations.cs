@@ -58,9 +58,12 @@ namespace Tablice
 
             string [] files = Directory.GetFiles(letterLink, "*.bmp");
 
+           
+
             for (int i = 0; i < files.Length; i++)
             {
                 Bitmap bmpLoad = new Bitmap(files[i]);
+                
                 double[] tmpArray = new double[bmpLoad.Width * bmpLoad.Height];
                 tmpArray = transformBitmapToArray(bmpLoad);
                 list.Add(tmpArray);
@@ -148,7 +151,8 @@ namespace Tablice
 
         public NeuralNetworkOperations(int characterSize)
         {
-            neuralNet = new ActivationNetwork(new BipolarSigmoidFunction(2.0f), characterSize, characterCount);
+            neuralNet = new ActivationNetwork(new BipolarSigmoidFunction(2.0f), characterSize, 400, characterCount);
+            
             neuralNet.Randomize();
             teacher = new AForge.Neuro.Learning.BackPropagationLearning(neuralNet);
             teacher.LearningRate = 0.5f;
@@ -158,11 +162,14 @@ namespace Tablice
 
             //var letters = treningLetterListInput.Zip(treningLetterListOutput, (i,o) => new { treningLetterListInput = i, treningLetterListOutput = o });
 
-            double err = 1.0f;
+            double err = 400.0f;
 
-            while(err > 300)
+            int count = 0;
+
+            while(err >= 30.0f)
             {
                 err = teacher.RunEpoch(treningLetterListInput.ToArray(), treningLetterListOutput.ToArray());
+                count++;
             }
 
             

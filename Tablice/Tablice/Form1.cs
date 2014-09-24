@@ -166,8 +166,8 @@ namespace Tablice
            dialog.Filter = "BMP | *.bmp";
 
           // dialog.InitialDirectory = "D:/Studia/BIAI/Tablice/Tablice/bin/Debug";
-           dialog.InitialDirectory = "C:";
-          
+         //dialog.InitialDirectory = "C:";
+          dialog.InitialDirectory = "C:/Users/k/Documents/GitHub/BIAI_PROJ/BIAI_PROJ/Tablice/Tablice/Images";
            dialog.Title = "Select a text file";
            if (dialog.ShowDialog() == DialogResult.OK)
 
